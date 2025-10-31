@@ -2,7 +2,7 @@
 
 What?
 - R package to read/write LPJ-GUESS ins files.
-- Flexible because you can add any parameters, PFTs, groups or stands to your ins file, and it will handle them!
+- Flexible because you can add any parameters, PFTs, groups or stands to your ins file, and it will handle them, i.e. no parameter names are hardcoded.
 - The reader also recursively includes any "imports" of other ins files, so just read the main one.
 
 Why?
@@ -15,5 +15,5 @@ How to use
 - See `readExample.R` for a script that reads the included global\*.ins files!
 
 To do
-- Deal with "param" lines in a better way.
+- Deal with "param" lines in a better, more structured, way.
 - Add metadata, which could be included as comments in the INS file header?
