@@ -1,7 +1,13 @@
 # LPJ-GUESS rINS
+
+What?
 - R package to read/write LPJ-GUESS ins files.
-- Flexible because you can add any parameters, PFTs or groups, and it will handle them!
-- The reader also recursively includes any "imports" of other ins files.
+- Flexible because you can add any parameters, PFTs, groups or stands to your ins file, and it will handle them!
+- The reader also recursively includes any "imports" of other ins files, so just read the main one.
+
+Why?
+- For tracking changes in model parameters in a more structured and automated way than using the text files.
+- Helpful for doing sensitivity tests!
 
 How to use
 - Reading: `my_params <- read_ins("my_ins_file.ins")`
@@ -10,4 +16,4 @@ How to use
 
 To do
 - Deal with "param" lines in a better way.
-
+- Add more metadata, which could be included as comments in the header?
