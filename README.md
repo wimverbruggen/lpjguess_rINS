@@ -21,3 +21,4 @@ Notes
 To do
 - Deal with "param" lines in a better, more structured, way.
 - Add metadata, which could be included as comments in the INS file header
+- Turn this into a proper R-package!
