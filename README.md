@@ -2,8 +2,8 @@
 
 What?
 - R package to read/write LPJ-GUESS ins files.
-- Flexible because you can add any parameters, PFTs, groups or stands to your ins file, and it will handle them, i.e. no parameter names are hardcoded.
-- The reader also recursively includes any "imports" of other ins files, so just read the main one.
+- Flexible because you can add any parameters, PFTs, groups or stands to your ins file, and it will handle them, i.e. nothing is hardcoded.
+- The reader also recursively includes any "imports" of other ins files, so you just need to read the main one.
 
 Why?
 - For tracking changes in model parameters in a more structured and automated way than using the text files.
@@ -14,6 +14,10 @@ How to use
 - Writing: `write_ins(my_params,"my_new_ins_file.ins")`
 - See `readExample.R` for a script that reads the included global\*.ins files!
 
+Notes
+- Currently it's best to have the ins files in your R working directory if there are any imports of other ins files. However, it does work if your ins file is self-contained (ie. no imports)
+- The writer function will create self-contained ins files!
+
 To do
 - Deal with "param" lines in a better, more structured, way.
-- Add metadata, which could be included as comments in the INS file header?
+- Add metadata, which could be included as comments in the INS file header
