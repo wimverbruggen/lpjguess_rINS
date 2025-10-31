@@ -231,7 +231,6 @@ read_ins <- function(file_path) {
   return(result)
 }
 
-
 # Main writing function
 write_ins <- function(params, output_file) {
   lines <- character()
@@ -277,39 +276,6 @@ write_ins <- function(params, output_file) {
     lines <- c(lines, "")
   }
   
-  # Write stand types (st)
-  if (length(params$st) > 0) {
-    lines <- c(lines, "!///////////////////////////////////////////////////////////////////////////////")
-    lines <- c(lines, "! STAND TYPES")
-    lines <- c(lines, "!///////////////////////////////////////////////////////////////////////////////")
-    lines <- c(lines, "")
-    
-    for (st_name in names(params$st)) {
-      lines <- c(lines, paste0('st "', st_name, '" ('))
-      lines <- c(lines, "")
-      
-      st_data <- params$st[[st_name]]
-      
-      # Write imports first
-      if (!is.null(st_data$imports)) {
-        for (import_name in st_data$imports) {
-          lines <- c(lines, paste("  ", import_name))
-        }
-        lines <- c(lines, "")
-      }
-      
-      # Write other parameters - each on single line even if multi-value
-      other_params <- st_data[!names(st_data) %in% "imports"]
-      for (param_name in names(other_params)) {
-        value <- other_params[[param_name]]
-        lines <- c(lines, paste("  ", param_name, format_value(value)))
-      }
-      
-      lines <- c(lines, ")")
-      lines <- c(lines, "")
-    }
-  }
-  
   # Write groups
   if (length(params$group) > 0) {
     lines <- c(lines, "!///////////////////////////////////////////////////////////////////////////////")
@@ -337,6 +303,39 @@ write_ins <- function(params, output_file) {
         value <- other_params[[param_name]]
         #lines <- c(lines, paste("  ", param_name, format_value(value)))
         lines <- c(lines, paste("  ",param_name,str_flatten(format_value(value),collapse = " ")))
+      }
+      
+      lines <- c(lines, ")")
+      lines <- c(lines, "")
+    }
+  }
+  
+  # Write stand types (st)
+  if (length(params$st) > 0) {
+    lines <- c(lines, "!///////////////////////////////////////////////////////////////////////////////")
+    lines <- c(lines, "! STAND TYPES")
+    lines <- c(lines, "!///////////////////////////////////////////////////////////////////////////////")
+    lines <- c(lines, "")
+    
+    for (st_name in names(params$st)) {
+      lines <- c(lines, paste0('st "', st_name, '" ('))
+      lines <- c(lines, "")
+      
+      st_data <- params$st[[st_name]]
+      
+      # Write imports first
+      if (!is.null(st_data$imports)) {
+        for (import_name in st_data$imports) {
+          lines <- c(lines, paste("  ", import_name))
+        }
+        lines <- c(lines, "")
+      }
+      
+      # Write other parameters - each on single line even if multi-value
+      other_params <- st_data[!names(st_data) %in% "imports"]
+      for (param_name in names(other_params)) {
+        value <- other_params[[param_name]]
+        lines <- c(lines, paste("  ", param_name, format_value(value)))
       }
       
       lines <- c(lines, ")")
