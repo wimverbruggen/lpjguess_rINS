@@ -16,4 +16,4 @@ How to use
 
 To do
 - Deal with "param" lines in a better way.
-- Add more metadata, which could be included as comments in the header?
+- Add metadata, which could be included as comments in the INS file header?
